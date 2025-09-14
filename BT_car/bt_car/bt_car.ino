@@ -1,14 +1,24 @@
-int motor1pin1 = 2;
+/*int motor1pin1 = 2;
 int motor1pin2 = 3;
 int motor2pin1 = 4;
 int motor2pin2 = 5;
+int motor3pin1 = 6;
+int motor3pin2 = 7;
+*/
+int right_pin1 = 2;
+int right_pin2 = 3;
+int left_pin1 = 4;
+int left_pin2 = 5;
+
 int state = 0;
 
 
 void setup() {
   // put your setup code here, to run once:
-  pinMode(motor1pin1, OUTPUT);
-  pinMode(motor1pin2, OUTPUT);
+  pinMode(right_pin1, OUTPUT);
+  pinMode(right_pin2, OUTPUT);
+  pinMode(left_pin1, OUTPUT);
+  pinMode(left_pin2, OUTPUT);
   Serial.begin(9600);
 }
 
@@ -19,22 +29,35 @@ void loop() {
     Serial.println(state);
   }
   if(state == 83){
-    digitalWrite(motor1pin1, LOW);
-    digitalWrite(motor1pin2, LOW);
-    digitalWrite(motor2pin1, LOW);
-    digitalWrite(motor2pin2, LOW);
+    digitalWrite(right_pin1, LOW);
+    digitalWrite(right_pin2, LOW);
+    digitalWrite(left_pin1, LOW);
+    digitalWrite(left_pin2, LOW);
   }
   if(state == 70){      // forward
-      digitalWrite(motor1pin1, HIGH);
-      digitalWrite(motor1pin2, LOW);
-      digitalWrite(motor2pin1, HIGH);
-      digitalWrite(motor2pin2, LOW);
-    }
-    if(state == 66){    // backward
-      digitalWrite(motor1pin1, LOW);
-      digitalWrite(motor1pin2, HIGH);
-      digitalWrite(motor2pin1, LOW);
-      digitalWrite(motor2pin2, HIGH);
-    }
+    digitalWrite(right_pin1, HIGH);
+    digitalWrite(right_pin2, LOW);
+    digitalWrite(left_pin1, HIGH);
+    digitalWrite(left_pin2, LOW);
+  }
+  if(state == 66){    // backward
+    digitalWrite(right_pin1, LOW);
+    digitalWrite(right_pin2, HIGH);
+    digitalWrite(left_pin1, LOW);
+    digitalWrite(left_pin2, HIGH);
+  }
+  if(state == 82){    // right
+    digitalWrite(right_pin1, LOW);
+    digitalWrite(right_pin2, HIGH);
+    digitalWrite(left_pin1, HIGH);
+    digitalWrite(left_pin2, LOW);
+  }
+  if(state == 76){    // left
+    digitalWrite(right_pin1, HIGH);
+    digitalWrite(right_pin2, LOW);
+    digitalWrite(left_pin1, LOW);
+    digitalWrite(left_pin2, HIGH);
+  }
+  
 
 }
